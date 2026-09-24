@@ -34,7 +34,7 @@ A beginner Python expense tracker that allows users to set a budget, record mult
 Make sure Python is installed, then run:
 
 ```bash
-python expense_tracker.py
+python expense.py
 ```
 
 Follow the prompts in the terminal to enter your budget and expenses.
