@@ -1,6 +1,13 @@
-budget = float(input("Enter your budget: ₦"))
+import json
 
-expenses = []
+budget = float(input("Enter your budget: #"))
+
+try:
+    with open("expenses.json", "r") as file:
+        expenses = json.load(file)
+except FileNotFoundError:
+    expenses = []
+
 add_more = "yes"
 accepted_answer = ["yes","y","yeah","sure",]
 
@@ -32,19 +39,21 @@ for expense in expenses:
     total += expense["amount"]
 
 print(f"\nTotal expenses: ₦{total}")
-
-
-# Compare with budget
+#Compare with budget
 while total > budget:
     print(f"You have ₦{budget - total} remaining.")
 
-
+    allowed_answers = ["yes", "y", "yeah", "yep"]
     remove_expense = input( "Would you like to remove an expense? ").lower()
-        
-    if remove_expense in ["yes", "y", "yeah", "yep"]:
+
+    if remove_expense not in allowed_answers:
+        print("No expense was removed.")
+        break
+    print("\nYour expenses:") 
+     
 
         # Display expenses with numbers
-        for index, expense in enumerate(expenses):
+    for index, expense in enumerate(expenses):
             print(
                 f"{index + 1}. "
                 f"{expense['category']} - "
@@ -54,13 +63,12 @@ while total > budget:
     
           
 
-        # Get user's choice
+# Get user's choice
         
     choice = int(input("Enter the number of the expense to remove: "))
-
-           
+       
                         
-                # Check whether the choice is valid
+ # Check whether the choice is valid
     if 1 <= choice <= len(expenses):
 
                 expense_index = choice - 1
@@ -75,4 +83,7 @@ while total > budget:
                 print(f"New total expenses: ₦{total}")
     else:
          break
+    
+with open("expenses.json", "w") as file:
+    json.dump(expenses, file, indent=4)
         

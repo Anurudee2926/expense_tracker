@@ -1,0 +1,22 @@
+[
+    {
+        "amount": 1500,
+        "category": "shoe",
+        "description": "gift"
+    },
+    {
+        "amount": 2900,
+        "category": "gau",
+        "description": "soft"
+    },
+    {
+        "amount": 20000,
+        "category": "food",
+        "description": "selfcare"
+    },
+    {
+        "amount": 8000,
+        "category": "slippers",
+        "description": "miscellaneous"
+    }
+]
